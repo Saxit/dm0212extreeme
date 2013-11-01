@@ -35,10 +35,10 @@
 
             <div class="input-group">
                 <span class="input-group-addon">-</span>
-                <asp:textbox runat="server" class="form-control" placeholder="Bredde" ID="breadthOfArt"/>
+                <asp:textbox runat="server" class="form-control" placeholder="Bredde" ID="widthOfArt"/>
             </div><br />
             
-            <input type="file" name="file" id="file"/><br />
+            <input type="file" name="file" ID="file"/><br />
 
             <asp:Button class="btn btn-primary" ID="saveInfo" runat="server" Text="Gem Information" OnClick="saveInfo_Click"></asp:Button>
 

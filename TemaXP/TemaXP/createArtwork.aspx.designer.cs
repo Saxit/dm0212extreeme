@@ -49,13 +49,13 @@ namespace TemaXP {
         protected global::System.Web.UI.WebControls.TextBox heightOfArt;
         
         /// <summary>
-        /// breadthOfArt control.
+        /// widthOfArt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox breadthOfArt;
+        protected global::System.Web.UI.WebControls.TextBox widthOfArt;
         
         /// <summary>
         /// saveInfo control.

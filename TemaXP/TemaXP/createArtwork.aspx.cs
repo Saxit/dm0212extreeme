@@ -16,7 +16,12 @@ namespace TemaXP
 
         protected void saveInfo_Click(object sender, EventArgs e)
         {
-            string name = nameOfArt.Text;
+            string nameArt = nameOfArt.Text;
+            string nameArtist = nameOfArtist.Text;
+            string year = yearOfArt.Text;
+            double height = Convert.ToDouble(heightOfArt.Text);
+            double width = Convert.ToDouble(widthOfArt.Text);
+            string 
         }
     }
 }
