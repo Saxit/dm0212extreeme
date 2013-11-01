@@ -38,7 +38,7 @@
                 <asp:textbox runat="server" class="form-control" placeholder="Bredde" ID="widthOfArt"/>
             </div><br />
             
-            <input type="file" name="file" ID="file"/><br />
+            <asp:FileUpload ID="uploadArtFile" runat="server" /> <br />
 
             <asp:Button class="btn btn-primary" ID="saveInfo" runat="server" Text="Gem Information" OnClick="saveInfo_Click"></asp:Button>
 
