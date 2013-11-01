@@ -13,6 +13,7 @@
 *_p.c
 *.ncb
 *.suo
+*.csproj
 *.tlb
 *.tlh
 *.bak
