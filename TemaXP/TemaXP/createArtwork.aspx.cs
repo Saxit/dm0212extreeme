@@ -21,7 +21,6 @@ namespace TemaXP
             string year = yearOfArt.Text;
             double height = Convert.ToDouble(heightOfArt.Text);
             double width = Convert.ToDouble(widthOfArt.Text);
-            string 
         }
     }
 }
