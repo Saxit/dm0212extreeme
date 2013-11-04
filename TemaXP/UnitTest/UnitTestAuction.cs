@@ -12,7 +12,7 @@ namespace UnitTest
     [TestClass]
     public class UnitTestAuction
     {
-        private Artwork art;
+        private Artwork art;    
         private Auction auction;
 
         [TestMethod]
@@ -28,6 +28,7 @@ namespace UnitTest
             art.location = "Aalborg";
             art.imagePath = "C:\\";
 
+            
             auction = new Auction();
             auction.startingBid = 100;
             auction.startDate = DateTime.Now;
@@ -35,8 +36,6 @@ namespace UnitTest
             auction.itemText = "This is a fine painting";
             auction.artID = art.id;
             auction.Artwork = art;
-
-            InsertArtDB();
         }
 
         [TestMethod]
