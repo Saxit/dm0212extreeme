@@ -13,7 +13,7 @@ namespace ModelXP.Models
 
         public int id { get; set; }
         public string artName { get; set; }
-        public string yearCreated { get; set; }
+        public int yearCreated { get; set; }
         public Nullable<decimal> height { get; set; }
         public Nullable<decimal> width { get; set; }
         public string location { get; set; }

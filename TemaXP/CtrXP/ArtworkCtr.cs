@@ -11,20 +11,23 @@ namespace CtrXP
     public class ArtworkCtr
     {
         private dmaa0212a_6Context dbContext;
+
+        //Contructor
         public ArtworkCtr()
         {
             dbContext = new dmaa0212a_6Context();
         }
 
-        public void CreateArtwork(string nameOfArt, string nameOfArtist, string yearOfArt, double heightOfArt, double widthOfArt, string location, string urlOfImage)
+        //Methods
+        public void CreateArtwork(string nameOfArt, string nameOfArtist, int yearOfArt, double heightOfArt, double widthOfArt, string location, string urlOfImage)
         {
 
             Artwork aw = new Artwork()
             {
                 artName = nameOfArt,
                 yearCreated = yearOfArt,
-                height = (decimal)heightOfArt,
-                width = (decimal)widthOfArt,
+                height = Convert.ToDecimal(heightOfArt),
+                width = Convert.ToDecimal(widthOfArt),
                 location = location,
                 imagePath = urlOfImage
                 

@@ -57,11 +57,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="ArtWorkTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestAuction.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CtrXP\CtrXP.csproj">
+      <Project>{a35f2793-a636-4640-905f-09ae6ae4e017}</Project>
+      <Name>CtrXP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ModelXP\ModelXP.csproj">
       <Project>{a2f6d02c-f386-499a-bf5d-4649153f75f8}</Project>
       <Name>ModelXP</Name>

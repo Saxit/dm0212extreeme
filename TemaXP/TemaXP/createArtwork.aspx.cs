@@ -5,12 +5,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
+using CtrXP;
 
 namespace TemaXP
 {
 
     public partial class createArtwork : System.Web.UI.Page
     {
+        
+        //Methods
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,12 +23,13 @@ namespace TemaXP
         {
             string nameArt = nameOfArt.Text;
             string nameArtist = nameOfArtist.Text;
-            string year = yearOfArt.Text;
-            string height = heightOfArt.Text;
-            string width = widthOfArt.Text;
-            //double height = (double)Convert.ToDouble(heightOfArt.Text);
-            //double width = Convert.ToDouble(widthOfArt.Text);
+            int year = Convert.ToInt32(yearOfArt.Text);
+            double height = Convert.ToDouble(heightOfArt.Text);
+            double width = Convert.ToDouble(widthOfArt.Text);
+            string location = locationOfArt.Text;
 
+            ArtworkCtr cont = new ArtworkCtr();
+            cont.CreateArtwork(nameArt, nameArtist, year, height, width, location, uploadArtFile.FileName);
                 try
                 {
                     if (Directory.Exists(Server.MapPath("~\\ArtWorkImages")))
@@ -46,6 +50,8 @@ namespace TemaXP
                 {
                     ex.StackTrace.ToString();
                 }
+
+            
            
         }
     }
