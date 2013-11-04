@@ -18,7 +18,6 @@ namespace TemaXP
 
         protected void saveInfo_Click(object sender, EventArgs e)
         {
-            string rPath = @"C:\\Users\\";
             string nameArt = nameOfArt.Text;
             string nameArtist = nameOfArtist.Text;
             string year = yearOfArt.Text;
@@ -27,18 +26,27 @@ namespace TemaXP
             //double height = (double)Convert.ToDouble(heightOfArt.Text);
             //double width = Convert.ToDouble(widthOfArt.Text);
 
-            if(uploadArtFile.HasFile)
-            {
                 try
                 {
-                    string fileName = Path.GetFileName(uploadArtFile.FileName);
-                    uploadArtFile.SaveAs(rPath + fileName);
+                    if (Directory.Exists(Server.MapPath("~\\ArtWorkImages")))
+                    {
+                        string imgName = uploadArtFile.FileName;
+                        string folderPath = Server.MapPath("~\\ArtWorkImages\\");
+                        uploadArtFile.SaveAs(folderPath+imgName);
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(Server.MapPath("~\\ArtWorkImages"));
+                        string imgName = uploadArtFile.FileName;
+                        string folderPath = Server.MapPath("~\\ArtWorkImages\\");
+                        uploadArtFile.SaveAs(folderPath+imgName);
+                    }
                 }
                 catch (Exception ex)
                 {
-
+                    ex.StackTrace.ToString();
                 }
-            }
+           
         }
     }
 }
