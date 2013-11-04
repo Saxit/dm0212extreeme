@@ -1,0 +1,17 @@
+﻿body {
+    background-color: #8bcdff;
+}
+
+#main_div {
+    background-color:#fff;
+    width: 600px;
+    height: auto;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+
+}
+
+#save_info {
+    float: right;
+}

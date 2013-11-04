@@ -6,13 +6,14 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css.css">
 
     <title>Opret kunstværk</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="main_div">
         <form runat="server">
-            <h1>Oprettelse af kunstværk</h1>
+            <h3>Oprettelse af kunstværk</h3>
             <div class="input-group">
                 <span class="input-group-addon">-</span>
                 <asp:textbox runat="server" class="form-control" placeholder="Navn på kunstværket" ID="nameOfArt"/>
@@ -43,9 +44,9 @@
                 <asp:textbox runat="server" class="form-control" placeholder="Galleriadresse" ID="locationOfArt"/>
             </div><br />
 
-            <asp:FileUpload ID="uploadArtFile" runat="server" /> <br />
+            <asp:FileUpload ID="uploadArtFile" runat="server"/> <br />
 
-            <asp:Button class="btn btn-primary" ID="saveInfo" runat="server" Text="Gem Information" OnClick="saveInfo_Click"></asp:Button>
+            <asp:Button class="btn btn-primary pull-right" ID="saveInfo" runat="server" Text="Gem Information" OnClick="saveInfo_Click"></asp:Button>
 
         </form>
     </div>
