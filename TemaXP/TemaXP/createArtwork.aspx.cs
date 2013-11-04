@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
+using System.Diagnostics;
 
 namespace TemaXP
 {
@@ -18,7 +19,6 @@ namespace TemaXP
 
         protected void saveInfo_Click(object sender, EventArgs e)
         {
-            string rPath = @"C:\\Users\\";
             string nameArt = nameOfArt.Text;
             string nameArtist = nameOfArtist.Text;
             string year = yearOfArt.Text;
@@ -31,12 +31,24 @@ namespace TemaXP
             {
                 try
                 {
-                    string fileName = Path.GetFileName(uploadArtFile.FileName);
-                    uploadArtFile.SaveAs(rPath + fileName);
+                    if (Directory.Exists(Server.MapPath("~\\ArtworkImages")))
+                    {
+                        string img_name = uploadArtFile.FileName;
+                        string folder_path = Server.MapPath("~\\ArtworkImages\\");
+                        uploadArtFile.SaveAs(folder_path + img_name);
+                    }
+                    else
+                    {
+
+                        Directory.CreateDirectory(Server.MapPath("~\\ArtworkImages"));
+                        string img_name = uploadArtFile.FileName;
+                        string folder_path = Server.MapPath("~\\ArtworkImages\\");
+                        uploadArtFile.SaveAs(folder_path + img_name);
+                    }
                 }
                 catch (Exception ex)
                 {
-
+                    ex.StackTrace.ToString();
                 }
             }
         }
