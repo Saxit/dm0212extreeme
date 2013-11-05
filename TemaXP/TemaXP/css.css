@@ -15,3 +15,31 @@
 #save_info {
     float: right;
 }
+
+#auction_main {
+    background-color:#123;
+    width:800px;
+    height:600px;
+    margin-top:20px;
+    padding-top:20px;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:10px;
+}
+
+#left_div {
+    width:360px;
+    height:500px;
+    background-color:#ffd800;
+    margin-left:20px;
+    float:left;
+    padding-left:20px;
+}
+
+#right_div {
+    width:360px;
+    height:500px;
+    background-color:#b6ff00;
+    margin-left:20px;
+    float:left;
+}

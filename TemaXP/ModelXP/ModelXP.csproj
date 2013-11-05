@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Artwork.cs" />
+    <Compile Include="Auction.cs" />
     <Compile Include="Models\Artwork.cs" />
     <Compile Include="Models\Auction.cs" />
     <Compile Include="Models\dmaa0212a_6Context.cs" />
