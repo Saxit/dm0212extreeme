@@ -37,5 +37,16 @@ namespace CtrXP
             db.SaveChanges();
 
         }
+
+        public List<Artwork> GetArtworks()
+        {
+            List<Artwork> artworks = new List<Artwork>();
+
+            using(var db = new ModelTemaXPContainer())
+            {
+                artworks = db.Artworks.ToList<Artwork>();
+            }
+            return artworks;
+        }
     }
 }
