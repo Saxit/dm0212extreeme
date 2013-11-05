@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelTemaXP.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelTemaXPStoreContainer">
+    <EntitySet Name="Auctions" EntityType="ModelTemaXP.Store.Auctions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Artworks" EntityType="ModelTemaXP.Store.Artworks" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="AuctionArtwork" Association="ModelTemaXP.Store.AuctionArtwork">
+      <End Role="Auction" EntitySet="Auctions" />
+      <End Role="Artwork" EntitySet="Artworks" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Auctions">
+    <Key>
+      <PropertyRef Name="AuctionId" />
+    </Key>
+    <Property Name="AuctionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="startingBid" Type="float" Nullable="false" />
+    <Property Name="startDate" Type="datetime" Nullable="false" />
+    <Property Name="endDate" Type="datetime" Nullable="false" />
+    <Property Name="itemText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Artwork_artworkId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Artworks">
+    <Key>
+      <PropertyRef Name="artworkId" />
+    </Key>
+    <Property Name="artworkId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="artistName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="year" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="height" Type="float" Nullable="false" />
+    <Property Name="width" Type="float" Nullable="false" />
+    <Property Name="location" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="imageName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="AuctionArtwork">
+    <End Role="Auction" Type="ModelTemaXP.Store.Auctions" Multiplicity="*" />
+    <End Role="Artwork" Type="ModelTemaXP.Store.Artworks" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Artwork">
+        <PropertyRef Name="artworkId" />
+      </Principal>
+      <Dependent Role="Auction">
+        <PropertyRef Name="Artwork_artworkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModelTemaXP" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelTemaXPContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Auctions" EntityType="ModelTemaXP.Auction" />
+          <EntitySet Name="Artworks" EntityType="ModelTemaXP.Artwork" />
+          <AssociationSet Name="AuctionArtwork" Association="ModelTemaXP.AuctionArtwork">
+            <End Role="Auction" EntitySet="Auctions" />
+            <End Role="Artwork" EntitySet="Artworks" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Auction">
+          <Key>
+            <PropertyRef Name="AuctionId" />
+          </Key>
+          <Property Type="Int32" Name="AuctionId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Double" Name="startingBid" Nullable="false" />
+          <Property Type="DateTime" Name="startDate" Nullable="false" />
+          <Property Type="DateTime" Name="endDate" Nullable="false" />
+          <Property Type="String" Name="itemText" Nullable="false" />
+          <NavigationProperty Name="Artwork" Relationship="ModelTemaXP.AuctionArtwork" FromRole="Auction" ToRole="Artwork" />
+        </EntityType>
+        <EntityType Name="Artwork">
+          <Key>
+            <PropertyRef Name="artworkId" />
+          </Key>
+          <Property Type="Int32" Name="artworkId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="artistName" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" />
+          <Property Type="String" Name="year" Nullable="false" />
+          <Property Type="Double" Name="height" Nullable="false" />
+          <Property Type="Double" Name="width" Nullable="false" />
+          <Property Type="String" Name="location" Nullable="false" />
+          <Property Type="String" Name="imageName" Nullable="false" />
+        </EntityType>
+        <Association Name="AuctionArtwork">
+          <End Type="ModelTemaXP.Auction" Role="Auction" Multiplicity="1" />
+          <End Type="ModelTemaXP.Artwork" Role="Artwork" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelTemaXPStoreContainer" CdmEntityContainer="ModelTemaXPContainer">
+    <EntitySetMapping Name="Auctions">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelTemaXP.Auction)">
+        <MappingFragment StoreEntitySet="Auctions">
+          <ScalarProperty Name="AuctionId" ColumnName="AuctionId" />
+          <ScalarProperty Name="startingBid" ColumnName="startingBid" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="itemText" ColumnName="itemText" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Artworks">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelTemaXP.Artwork)">
+        <MappingFragment StoreEntitySet="Artworks">
+          <ScalarProperty Name="artworkId" ColumnName="artworkId" />
+          <ScalarProperty Name="artistName" ColumnName="artistName" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="imageName" ColumnName="imageName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AuctionArtwork" TypeName="ModelTemaXP.AuctionArtwork" StoreEntitySet="Auctions">
+      <EndProperty Name="Artwork">
+        <ScalarProperty Name="artworkId" ColumnName="Artwork_artworkId" />
+      </EndProperty>
+      <EndProperty Name="Auction">
+        <ScalarProperty Name="AuctionId" ColumnName="AuctionId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
