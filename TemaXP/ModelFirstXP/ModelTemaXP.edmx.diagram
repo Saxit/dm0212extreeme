@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f9342de228f147a7b29fedd7515a0b45" Name="Diagram1" >
-        <EntityTypeShape EntityType="ModelTemaXP.Auction" Width="1.5" PointX="2.5" PointY="0.625" />
-        <EntityTypeShape EntityType="ModelTemaXP.Artwork" Width="1.5" PointX="5.5" PointY="0.625" />
-        <AssociationConnector Association="ModelTemaXP.AuctionArtwork" />
+        <EntityTypeShape EntityType="ModelTemaXP.Auction" Width="1.5" PointX="4.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelTemaXP.Artwork" Width="1.5" PointX="2.125" PointY="0.625" />
+        <AssociationConnector Association="ModelTemaXP.ArtworkAuction" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

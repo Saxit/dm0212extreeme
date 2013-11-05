@@ -3,22 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ModelXP.Models;
 using System.Data.Entity;
+using ModelFirstXP;
 
 namespace CtrXP
 {
     public class AuctionCtr
     {
-        private dmaa0212a_6Context dbContext;
-
         // Constructor
         public AuctionCtr()
         {
-            dbContext = new dmaa0212a_6Context();
+            
         }
 
-        public void CreateAuction(int startBid, DateTime startDate, DateTime endDate, string itemText, int artId)
+        public void CreateAuction(float startBid, DateTime startDate, DateTime endDate, string itemText, int artId)
         {
             Auction au = new Auction()
             {
@@ -26,9 +24,10 @@ namespace CtrXP
                 startDate = startDate,
                 endDate = endDate,
                 itemText = itemText,
-                artID = artId,
+                
             };
 
+            ModelTemaXPContainer dbContext = new ModelTemaXPContainer();
             dbContext.Auctions.Add(au);
             dbContext.SaveChanges();
         }

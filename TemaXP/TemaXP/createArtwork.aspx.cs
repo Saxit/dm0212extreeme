@@ -23,7 +23,7 @@ namespace TemaXP
         {
             string nameArt = nameOfArt.Text;
             string nameArtist = nameOfArtist.Text;
-            int year = Convert.ToInt32(yearOfArt.Text);
+            string year = (yearOfArt.Text);
             double height = Convert.ToDouble(heightOfArt.Text);
             double width = Convert.ToDouble(widthOfArt.Text);
             string location = locationOfArt.Text;

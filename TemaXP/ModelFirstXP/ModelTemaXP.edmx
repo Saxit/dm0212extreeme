@@ -8,9 +8,9 @@
   <EntityContainer Name="ModelTemaXPStoreContainer">
     <EntitySet Name="Auctions" EntityType="ModelTemaXP.Store.Auctions" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Artworks" EntityType="ModelTemaXP.Store.Artworks" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="AuctionArtwork" Association="ModelTemaXP.Store.AuctionArtwork">
-      <End Role="Auction" EntitySet="Auctions" />
+    <AssociationSet Name="ArtworkAuction" Association="ModelTemaXP.Store.ArtworkAuction">
       <End Role="Artwork" EntitySet="Artworks" />
+      <End Role="Auction" EntitySet="Auctions" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Auctions">
@@ -22,7 +22,7 @@
     <Property Name="startDate" Type="datetime" Nullable="false" />
     <Property Name="endDate" Type="datetime" Nullable="false" />
     <Property Name="itemText" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Artwork_artworkId" Type="int" Nullable="false" />
+    <Property Name="Artwork_artworkId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Artworks">
     <Key>
@@ -37,9 +37,9 @@
     <Property Name="location" Type="nvarchar(max)" Nullable="false" />
     <Property Name="imageName" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <Association Name="AuctionArtwork">
+  <Association Name="ArtworkAuction">
+    <End Role="Artwork" Type="ModelTemaXP.Store.Artworks" Multiplicity="0..1" />
     <End Role="Auction" Type="ModelTemaXP.Store.Auctions" Multiplicity="*" />
-    <End Role="Artwork" Type="ModelTemaXP.Store.Artworks" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="Artwork">
         <PropertyRef Name="artworkId" />
@@ -56,9 +56,9 @@
         <EntityContainer Name="ModelTemaXPContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Auctions" EntityType="ModelTemaXP.Auction" />
           <EntitySet Name="Artworks" EntityType="ModelTemaXP.Artwork" />
-          <AssociationSet Name="AuctionArtwork" Association="ModelTemaXP.AuctionArtwork">
-            <End Role="Auction" EntitySet="Auctions" />
+          <AssociationSet Name="ArtworkAuction" Association="ModelTemaXP.ArtworkAuction">
             <End Role="Artwork" EntitySet="Artworks" />
+            <End Role="Auction" EntitySet="Auctions" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Auction">
@@ -70,7 +70,7 @@
           <Property Type="DateTime" Name="startDate" Nullable="false" />
           <Property Type="DateTime" Name="endDate" Nullable="false" />
           <Property Type="String" Name="itemText" Nullable="false" />
-          <NavigationProperty Name="Artwork" Relationship="ModelTemaXP.AuctionArtwork" FromRole="Auction" ToRole="Artwork" />
+          <NavigationProperty Name="Artwork" Relationship="ModelTemaXP.ArtworkAuction" FromRole="Auction" ToRole="Artwork" />
         </EntityType>
         <EntityType Name="Artwork">
           <Key>
@@ -84,10 +84,11 @@
           <Property Type="Double" Name="width" Nullable="false" />
           <Property Type="String" Name="location" Nullable="false" />
           <Property Type="String" Name="imageName" Nullable="false" />
+          <NavigationProperty Name="Auction" Relationship="ModelTemaXP.ArtworkAuction" FromRole="Artwork" ToRole="Auction" />
         </EntityType>
-        <Association Name="AuctionArtwork">
-          <End Type="ModelTemaXP.Auction" Role="Auction" Multiplicity="1" />
-          <End Type="ModelTemaXP.Artwork" Role="Artwork" Multiplicity="1" />
+        <Association Name="ArtworkAuction">
+          <End Type="ModelTemaXP.Artwork" Role="Artwork" Multiplicity="0..1" />
+          <End Type="ModelTemaXP.Auction" Role="Auction" Multiplicity="0..1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -120,13 +121,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="AuctionArtwork" TypeName="ModelTemaXP.AuctionArtwork" StoreEntitySet="Auctions">
+    <AssociationSetMapping Name="ArtworkAuction" TypeName="ModelTemaXP.ArtworkAuction" StoreEntitySet="Auctions">
       <EndProperty Name="Artwork">
         <ScalarProperty Name="artworkId" ColumnName="Artwork_artworkId" />
       </EndProperty>
       <EndProperty Name="Auction">
         <ScalarProperty Name="AuctionId" ColumnName="AuctionId" />
       </EndProperty>
+      <Condition ColumnName="Artwork_artworkId" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>

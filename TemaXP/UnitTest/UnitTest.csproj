@@ -59,7 +59,7 @@
   <ItemGroup>
     <Compile Include="ArtWorkTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTestAuction.cs" />
+    <Compile Include="AuctionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CtrXP\CtrXP.csproj">

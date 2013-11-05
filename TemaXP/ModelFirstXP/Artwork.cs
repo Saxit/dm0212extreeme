@@ -22,5 +22,7 @@ namespace ModelFirstXP
         public double width { get; set; }
         public string location { get; set; }
         public string imageName { get; set; }
+    
+        public virtual Auction Auction { get; set; }
     }
 }

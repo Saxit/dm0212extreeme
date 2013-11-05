@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/05/2013 09:42:38
+-- Date Created: 11/05/2013 10:32:09
 -- Generated from EDMX file: C:\Users\chrome\Documents\MyProjects\TemaXP\TemaXP\ModelFirstXP\ModelTemaXP.edmx
 -- --------------------------------------------------
 
@@ -18,18 +18,18 @@ GO
 -- --------------------------------------------------
 
 IF OBJECT_ID(N'[dbo].[FK_AuctionArtwork]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AuctionSet] DROP CONSTRAINT [FK_AuctionArtwork];
+    ALTER TABLE [dbo].[Artworks] DROP CONSTRAINT [FK_AuctionArtwork];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[AuctionSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[AuctionSet];
+IF OBJECT_ID(N'[dbo].[Auctions]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Auctions];
 GO
-IF OBJECT_ID(N'[dbo].[ArtworkSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ArtworkSet];
+IF OBJECT_ID(N'[dbo].[Artworks]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Artworks];
 GO
 
 -- --------------------------------------------------
@@ -43,7 +43,7 @@ CREATE TABLE [dbo].[Auctions] (
     [startDate] datetime  NOT NULL,
     [endDate] datetime  NOT NULL,
     [itemText] nvarchar(max)  NOT NULL,
-    [Artwork_artworkId] int  NOT NULL
+    [Artwork_artworkId] int  NULL
 );
 GO
 
@@ -82,14 +82,14 @@ GO
 
 -- Creating foreign key on [Artwork_artworkId] in table 'Auctions'
 ALTER TABLE [dbo].[Auctions]
-ADD CONSTRAINT [FK_AuctionArtwork]
+ADD CONSTRAINT [FK_ArtworkAuction]
     FOREIGN KEY ([Artwork_artworkId])
     REFERENCES [dbo].[Artworks]
         ([artworkId])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
--- Creating non-clustered index for FOREIGN KEY 'FK_AuctionArtwork'
-CREATE INDEX [IX_FK_AuctionArtwork]
+-- Creating non-clustered index for FOREIGN KEY 'FK_ArtworkAuction'
+CREATE INDEX [IX_FK_ArtworkAuction]
 ON [dbo].[Auctions]
     ([Artwork_artworkId]);
 GO

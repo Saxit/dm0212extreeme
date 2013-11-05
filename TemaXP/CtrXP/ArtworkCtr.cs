@@ -3,38 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ModelXP.Models;
+using ModelFirstXP;
 using System.Data.Entity;
 
 namespace CtrXP
 {
     public class ArtworkCtr
     {
-        private dmaa0212a_6Context dbContext;
-
         //Contructor
         public ArtworkCtr()
         {
-            dbContext = new dmaa0212a_6Context();
+            
         }
 
         //Methods
-        public void CreateArtwork(string nameOfArt, string nameOfArtist, int yearOfArt, double heightOfArt, double widthOfArt, string location, string urlOfImage)
+        public void CreateArtwork(string nameOfArt, string nameOfArtist, string yearOfArt, double heightOfArt, double widthOfArt, string location, string urlOfImage)
         {
 
             Artwork aw = new Artwork()
             {
-                artName = nameOfArt,
-                yearCreated = yearOfArt,
-                height = Convert.ToDecimal(heightOfArt),
-                width = Convert.ToDecimal(widthOfArt),
+                name = nameOfArt,
+                artistName = nameOfArtist,
+                year = yearOfArt,
+                height = (heightOfArt),
+                width = (widthOfArt),
                 location = location,
-                imagePath = urlOfImage
+                imageName = urlOfImage
                 
             };
-            
-            dbContext.Artworks.Add(aw);
-            dbContext.SaveChanges();
+
+            ModelTemaXPContainer db = new ModelTemaXPContainer();
+            db.Artworks.Add(aw);
+            db.SaveChanges();
 
         }
     }
