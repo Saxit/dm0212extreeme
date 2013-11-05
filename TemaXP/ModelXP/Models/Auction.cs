@@ -5,6 +5,11 @@ namespace ModelXP.Models
 {
     public partial class Auction
     {
+        public Auction()
+        {
+            var db = new dmaa0212a_6Context();
+        }
+
         public int id { get; set; }
         public Nullable<int> startingBid { get; set; }
         public Nullable<System.DateTime> startDate { get; set; }

@@ -1,59 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ModelXP.Models;
-using System.Data.Entity;
+using ModelXP;
+using CtrXP;
 
 namespace UnitTest
 {
     [TestClass]
     public class UnitTestAuction
     {
-        private Artwork art;    
-        private Auction auction;
-
         [TestMethod]
-        public void CreateAuction()
+        public void TestCreateAuction()
         {
-            Console.WriteLine("Gets Here");
-            art = new Artwork();
-            art.id = 1;
-            art.artName = "picasso";
-            art.yearCreated = 1988;
-            art.height = 5;
-            art.width = 5;
-            art.location = "Aalborg";
-            art.imagePath = "C:\\";
+            int startingBid = 100;
+            DateTime startingDate = DateTime.Now;
+            DateTime endingDate = DateTime.Now.AddDays(1);
+            string itemDescription = "A Piece of art";
+            int artId = 1;
 
-            
-            auction = new Auction();
-            auction.startingBid = 100;
-            auction.startDate = DateTime.Now;
-            auction.endDate = DateTime.Now.AddDays(1);
-            auction.itemText = "This is a fine painting";
-            auction.artID = art.id;
-            auction.Artwork = art;
+            Auction au = new Auction(startingBid,startingDate,endingDate,itemDescription,artId);
+
+            Assert.AreEqual(100, startingBid, "Wrong, values not matching");
+            //Assert.AreEqual(DateTime.Now, startingDate, "Wrong, values not matching");
+            //Assert.AreEqual(DateTime.Now.AddDays(1), endingDate, "Wrong, values not matching");
+            Assert.AreEqual("A Piece of art", itemDescription, "Wrong, values not matching");
+            Assert.AreEqual(1, artId, "Wrong, values not matching");
         }
 
+
         [TestMethod]
-        public void InsertArtDB()
+        public void TestCreateAuctionDB()
         {
-            CreateAuction();
-            using (var db = new dmaa0212a_6Context()) 
-            {
-                try
-                {
-                    db.Artworks.Add(art);
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Exception occured" + ex);
-                }
-            }
+            int startingBid = 100;
+            DateTime startingDate = DateTime.Now;
+            DateTime endingDate = DateTime.Now.AddDays(1);
+            string itemDescription = "A Piece of art";
+            int artId = 1;
+
+            AuctionCtr auCtr = new AuctionCtr();
+ 
+            auCtr.CreateAuction(startingBid, startingDate, endingDate, itemDescription, artId);
         }
     }
 }
