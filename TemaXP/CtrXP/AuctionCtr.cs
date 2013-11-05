@@ -18,18 +18,21 @@ namespace CtrXP
 
         public void CreateAuction(float startBid, DateTime startDate, DateTime endDate, string itemText, int artId)
         {
-            Auction au = new Auction()
+            using (var db = new ModelTemaXPContainer())
             {
-                startingBid = startBid,
-                startDate = startDate,
-                endDate = endDate,
-                itemText = itemText,
-                
-            };
+                Auction au = new Auction()
+                {
+                    startingBid = startBid,
+                    startDate = startDate,
+                    endDate = endDate,
+                    itemText = itemText,
+                    Artwork = db.Artworks.Find(1) //hardcoded id for testing purposes
+                };
 
-            ModelTemaXPContainer dbContext = new ModelTemaXPContainer();
-            dbContext.Auctions.Add(au);
-            dbContext.SaveChanges();
+                //using (dbContext = new ModelTemaXPContainer()) ;
+                db.Auctions.Add(au);
+                db.SaveChanges();
+            }
         }
     }
 }
