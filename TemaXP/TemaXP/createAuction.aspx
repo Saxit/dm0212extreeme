@@ -4,32 +4,57 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Opret Auktion</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js" />
     <link rel="stylesheet" type="text/css" href="css.css" />
+
+    <title>Opret Auktion</title>
+
 </head>
 <body>
-    <div class="container" id="auction_main">
-        <form id="form1" runat="server">
-           
-             <div id="left_div" class="pull-left">
-                <h3>Opret Auktion</h3>
-                 <asp:TextBox ID="artId" runat="server" placeholder="Kunst Id"></asp:TextBox>
-                 <asp:Button ID="idCheck" runat="server" Text="Find Kunstværk" OnClick="idCheck_Click" />
-                 <br />
-                 <br />
-                 <asp:TextBox ID="startingBid" runat="server" placeholder="Startpris"></asp:TextBox>
-                 <br />
-                 <br />
-                 <asp:TextBox ID="startDate" runat="server" placeholder="Startdato dd/mm/yy"></asp:TextBox><br />
-                 <asp:TextBox ID="endDate" runat="server" placeholder="Startdato dd/mm/yy"></asp:TextBox>
-                 <br />
-                 <br />
-                 <asp:Button ID="saveInfo" runat="server" Text="Start Auktion" OnClick="saveInfo_Click"/>
+    <div class="container" id="main_div">
+
+        <ul class="nav nav-pills">
+            <li><a href="index.aspx">Home</a></li>
+            <li><a href="createArtwork.aspx">Opret kunstværk</a></li>
+            <li class="active">
+                <a href="createAuction.aspx">Sælg kunstværk på auktion</a>
+            </li>
+        </ul>
+
+        <form runat="server">
+
+            <h3>Opret Auktion</h3>
+
+            <div class="input-group">
+                <span class="input-group-addon inputBar">ID</span>
+                <asp:TextBox runat="server" class="form-control" placeholder="Indsæt ID på kunstværk" ID="artId"/>
+            </div><br />
+
+            <asp:Button class="btn btn-primary" ID="idCheck" runat="server" Text="Find Kunstværk" OnClick="idCheck_Click" />
+            <br />
+            <br />
+
+            <div class="input-group">
+                <span class="input-group-addon inputBar">Kr.</span>
+                <asp:TextBox runat="server" class="form-control" placeholder="Startbud på auktion" ID="startingBid" />
             </div>
-            
-            <div id="right_div" class="pull-right">
+            <br />
+
+            <div class="input-group">
+                <span class="input-group-addon inputBar">Startdato</span>
+                <asp:TextBox runat="server" class="form-control" placeholder="dd/mm/yy" ID="startDate" />
             </div>
+            <br />
+
+            <div class="input-group">
+                <span class="input-group-addon inputBar">Slutdato</span>
+                <asp:TextBox runat="server" class="form-control" placeholder="dd/mm/yy" ID="endDate" />
+            </div>
+            <br />
+            <asp:Button class="btn btn-primary pull-right" ID="saveInfo" runat="server" Text="Start Auktion" OnClick="saveInfo_Click" />
         </form>
     </div>
 </body>

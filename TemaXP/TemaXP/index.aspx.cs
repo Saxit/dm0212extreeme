@@ -10,7 +10,7 @@ namespace TemaXP
     public partial class index : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {/*
             if (!IsPostBack)
             {
                 BtnTest.Text = "refreshed";
@@ -24,7 +24,7 @@ namespace TemaXP
 
         private void click()
         {
-            BtnTest.Text = "Clicked";
+            BtnTest.Text = "Clicked";*/
         }
     }
 }

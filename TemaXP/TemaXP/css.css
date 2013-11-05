@@ -3,13 +3,13 @@
 }
 
 #main_div {
-    background-color:#fff;
-    width: 600px;
-    height: auto;
+    background-color: #fff;
+    width: 800px;
+    height: 600px;
     padding-bottom: 10px;
+    padding-top: 10px;
     border-radius: 5px;
     margin-top: 20px;
-
 }
 
 #save_info {
@@ -17,29 +17,27 @@
 }
 
 #auction_main {
-    background-color:#123;
-    width:800px;
-    height:600px;
-    margin-top:20px;
-    padding-top:20px;
-    margin-left:auto;
-    margin-right:auto;
-    border-radius:10px;
+    background-color: #123;
+    width: 800px;
+    height: 600px;
+    margin-top: 20px;
+    padding-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
 }
 
-#left_div {
-    width:360px;
-    height:500px;
-    background-color:#ffd800;
-    margin-left:20px;
-    float:left;
-    padding-left:20px;
+#index_front {
+    background-color: #fff;
+    width: 800px;
+    height: 600px;
+
+    border-radius: 5px;
+
+    margin-top: 50px;
+    padding-top: 20px;
 }
 
-#right_div {
-    width:360px;
-    height:500px;
-    background-color:#b6ff00;
-    margin-left:20px;
-    float:left;
+.inputBar {
+    width: 80px;
 }
