@@ -1,0 +1,35 @@
+FEEDBACK PÅ FREMLÆGGELSE temaXp:
+
+*husk story points på task vi nedbryder i [estimere tasks]
+*husk ændre velocity hvis den ikke passer
+*vi skal huske at have fejlhåndtering med userstories og acceptests
+*test first skal vi have succes margen og teste på hver side af det
+*der skal fejlhåndtering på userstories
+*husk standup møde hver morgen samme tid
+
+*hvis der er noget kunden troede lå i en userstory skal vi genforhandle
+ således at der laves prioritering af hvor vigtigt det kunden synes mangler er
+ vi har stadig det samlede antal storypoints at gøre godt med pr tid
+ (hvordan med dette - skal man så planning poker igen eller?)
+ der skal laves ny userstory for at inputvalidere
+ der skal laves ny userstory for at fejlhåndtere
+ vi skal sætte enheder på cm for billedets højde
+*vi skal huske at der skal være en ansvarlig for en task
+*bruge god tid på at sætte miljø op i en iteration0
+*vi skal have styr på integration af userstories til samlet projekt
+*vi bør vi sen situation med fejlscenarie og vise at userstorien kan håndtere det 
+
+
+noter fra andres oplæg:
+ikke være overbevisende overfor kunden
+vigtigere at kunne skrive fornuftige tests fremfor at at kode helt system
+vi skal ikke fortælle om det vi ikke har lavet til kunden men om det vi har lavet
+
+
+
+*det er godt at vise kunden noget UI der fungerer
+*kun vise knap hvis funktionalitet er der
+ er det os eller kunden der har ret
+ hvis ikke man har gjort som kunden forestillede sig
+
+
